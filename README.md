@@ -1,4 +1,7 @@
+[![](https://jitpack.io/v/pao11/FingerprintRelease.svg)](https://jitpack.io/#pao11/FingerprintRelease)
+
 # 概况
+
 
 这是一个可拓展的Android指纹识别API兼容库，目前集成了以下API：
 
