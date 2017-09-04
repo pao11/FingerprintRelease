@@ -12,7 +12,7 @@ API调用优先级：安卓API > 三星SDK > 魅族SDK
 
 **1. Gradle 添加引用**
 
-    compile 'com.github.pao11:FingerprintRelease:v1.0.1'
+    compile 'com.github.pao11:FingerprintRelease:v1.0.2'
 
 **2. AndroidManifest 添加权限**
 
