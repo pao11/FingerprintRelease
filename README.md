@@ -10,7 +10,7 @@
 
 **1. Gradle 添加引用**
 
-    compile 'com.github.pao11:FingerprintRelease:v1.0.3'
+    compile 'com.github.pao11:FingerprintRelease:v1.1.0'
 
 **2. AndroidManifest 添加权限**
 
