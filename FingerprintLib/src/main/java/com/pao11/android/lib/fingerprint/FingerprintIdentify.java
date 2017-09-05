@@ -5,8 +5,6 @@ import android.content.Context;
 import com.pao11.android.lib.fingerprint.base.BaseFingerprint;
 import com.pao11.android.lib.fingerprint.base.BaseFingerprint.FingerprintIdentifyExceptionListener;
 import com.pao11.android.lib.fingerprint.impl.AndroidFingerprint;
-import com.pao11.android.lib.fingerprint.impl.MeiZuFingerprint;
-import com.pao11.android.lib.fingerprint.impl.SamsungFingerprint;
 
 /**
  *
@@ -31,22 +29,6 @@ public class FingerprintIdentify {
             }
         }
 
-        SamsungFingerprint samsungFingerprint = new SamsungFingerprint(context, exceptionListener);
-        if (samsungFingerprint.isHardwareEnable()) {
-            mSubFingerprint = samsungFingerprint;
-            if (samsungFingerprint.isRegisteredFingerprint()) {
-                mFingerprint = samsungFingerprint;
-                return;
-            }
-        }
-
-        MeiZuFingerprint meiZuFingerprint = new MeiZuFingerprint(context, exceptionListener);
-        if (meiZuFingerprint.isHardwareEnable()) {
-            mSubFingerprint = meiZuFingerprint;
-            if (meiZuFingerprint.isRegisteredFingerprint()) {
-                mFingerprint = meiZuFingerprint;
-            }
-        }
     }
 
     // DO
@@ -70,6 +52,12 @@ public class FingerprintIdentify {
         }
 
         mFingerprint.resumeIdentify();
+    }
+
+    public void restartIdentify(){
+        if (isFingerprintEnable()) {
+            mFingerprint.restartIdentify();
+        }
     }
 
     // GET & SET

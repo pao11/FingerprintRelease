@@ -42,6 +42,16 @@ public abstract class BaseFingerprint {
         doIdentify();
     }
 
+    public void restartIdentify() {
+        if (mIdentifyListener != null) {
+            mIsCalledStartIdentify = true;
+            mIsCanceledIdentify = false;
+            mNumberOfFailures = 0;
+
+            doIdentify();
+        }
+    }
+
     public void resumeIdentify() {
         if (mIsCalledStartIdentify && mIdentifyListener != null && mNumberOfFailures < mMaxAvailableTimes) {
             mIsCanceledIdentify = false;

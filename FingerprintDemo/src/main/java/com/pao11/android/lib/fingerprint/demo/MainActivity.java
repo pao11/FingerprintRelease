@@ -81,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void restart(View view) {
+        mFingerprintIdentify.restartIdentify();
+    }
+
     @Override
     protected void onPause() {
         super.onPause();

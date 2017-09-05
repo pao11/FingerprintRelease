@@ -7,15 +7,10 @@
 
 安卓API：最低支持安卓**6.0**系统 [(查看详细介绍)](https://developer.android.com/reference/android/support/v4/hardware/fingerprint/FingerprintManagerCompat.html)
 
-三星SDK：最低支持安卓**4.2**系统 [(查看详细介绍)](http://developer.samsung.com/galaxy/pass#)
-
-魅族SDK：最低支持安卓**5.1**系统 [(查看详细介绍)](http://open-wiki.flyme.cn/index.php?title=%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%ABAPI)
-
-API调用优先级：安卓API > 三星SDK > 魅族SDK
 
 **1. Gradle 添加引用**
 
-    compile 'com.github.pao11:FingerprintRelease:v1.0.2'
+    compile 'com.github.pao11:FingerprintRelease:v1.0.3'
 
 **2. AndroidManifest 添加权限**
 
@@ -33,6 +28,7 @@ API调用优先级：安卓API > 三星SDK > 魅族SDK
     mFingerprintIdentify.startIdentify(maxTimes, listener);                     // 开始验证指纹识别
     mFingerprintIdentify.cancelIdentify();                                      // 关闭指纹识别
     mFingerprintIdentify.resumeIdentify();                                      // 恢复指纹识别并保证错误次数不变
+    mFingerprintIdentify.restartIdentify();                                      // 恢复指纹识别并保证错误次数不变
 
 **4. startIdentify 方法解析**
 
@@ -68,6 +64,8 @@ API调用优先级：安卓API > 三星SDK > 魅族SDK
     -keep class com.samsung.android.sdk.** { *; }
 
 **6. 更新记录**
+
+**v1.0.3**　`2017.09.05`　删除集成三星、魅族SDK，只支持Android6.0以后的系统
 
 **v1.0.2**　`2017.09.05`　集成三星、魅族SDK
 
