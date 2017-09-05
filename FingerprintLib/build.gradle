@@ -41,5 +41,4 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:23.1.0'
     testCompile 'junit:junit:4.12'
-    compile files('libs/MeiZu_Fingerprint.jar')
 }
