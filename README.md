@@ -10,7 +10,7 @@
 
 **1. Gradle 添加引用**
 
-    compile 'com.github.pao11:FingerprintRelease:v1.1.0'
+    compile 'com.github.pao11:FingerprintRelease:v1.2.0'
 
 **2. AndroidManifest 添加权限**
 
@@ -64,6 +64,8 @@
     -keep class com.samsung.android.sdk.** { *; }
 
 **6. 更新记录**
+
+**v1.2.0**　`2017.09.07`　增加CryptoObject，这是一个加密的对象类，用来保证认证的安全性
 
 **v1.0.3**　`2017.09.05`　删除集成三星、魅族SDK，只支持Android6.0以后的系统
 
