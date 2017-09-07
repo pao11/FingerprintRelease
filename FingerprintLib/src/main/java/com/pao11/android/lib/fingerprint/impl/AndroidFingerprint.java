@@ -36,7 +36,8 @@ public class AndroidFingerprint extends BaseFingerprint {
     protected void doIdentify() {
         try {
             mCancellationSignal = new CancellationSignal();
-            mFingerprintManagerCompat.authenticate(null, 0, mCancellationSignal, new FingerprintManagerCompat.AuthenticationCallback() {
+            CryptoObjectHelper cryptoObjectHelper = new CryptoObjectHelper();
+            mFingerprintManagerCompat.authenticate(cryptoObjectHelper.buildCryptoObject(), 0, mCancellationSignal, new FingerprintManagerCompat.AuthenticationCallback() {
                 @Override
                 public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
                     super.onAuthenticationSucceeded(result);
