@@ -28,7 +28,7 @@
     mFingerprintIdentify.startIdentify(maxTimes, listener);                     // 开始验证指纹识别
     mFingerprintIdentify.cancelIdentify();                                      // 关闭指纹识别
     mFingerprintIdentify.resumeIdentify();                                      // 恢复指纹识别并保证错误次数不变
-    mFingerprintIdentify.restartIdentify();                                      // 恢复指纹识别并保证错误次数不变
+    mFingerprintIdentify.restartIdentify();                                     // 恢复指纹识别并初始化错误次数
 
 **4. startIdentify 方法解析**
 
