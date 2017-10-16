@@ -1,4 +1,5 @@
 [![](https://jitpack.io/v/pao11/FingerprintRelease.svg)](https://jitpack.io/#pao11/FingerprintRelease)
+[![Travis](https://img.shields.io/badge/Gradle-2.3.1-brightgreen.svg)]()
 
 # 概况
 
