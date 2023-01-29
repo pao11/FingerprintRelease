@@ -21,7 +21,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Handler;
-import android.support.annotation.RequiresPermission;
+
+import androidx.annotation.RequiresPermission;
 
 import java.security.Signature;
 
@@ -92,6 +93,7 @@ public final class FingerprintManagerCompatApi23 {
         return new FingerprintManager.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errMsgId, CharSequence errString) {
+//                System.out.println(">>>>>>>>>>>>>>error>" + errMsgId + ":::" + errString);
                 callback.onAuthenticationError(errMsgId, errString);
             }
 

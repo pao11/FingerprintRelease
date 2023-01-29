@@ -2,7 +2,9 @@ package com.pao11.android.lib.fingerprint.impl;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.v4.os.CancellationSignal;
+
+import androidx.annotation.RequiresApi;
+import androidx.core.os.CancellationSignal;
 
 import com.pao11.android.lib.fingerprint.aosp.FingerprintManagerCompat;
 import com.pao11.android.lib.fingerprint.base.BaseFingerprint;
@@ -32,6 +34,7 @@ public class AndroidFingerprint extends BaseFingerprint {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void doIdentify() {
         try {
@@ -53,12 +56,13 @@ public class AndroidFingerprint extends BaseFingerprint {
                 @Override
                 public void onAuthenticationError(int errMsgId, CharSequence errString) {
                     super.onAuthenticationError(errMsgId, errString);
-                    onFailed(errMsgId == 7); // FingerprintManager.FINGERPRINT_ERROR_LOCKOUT
+//                    onFailed(errMsgId == 7); // FingerprintManager.FINGERPRINT_ERROR_LOCKOUT
+                    onFailed(errMsgId, errString); // FingerprintManager.FINGERPRINT_ERROR_LOCKOUT
                 }
             }, null);
         } catch (Throwable e) {
             onCatchException(e);
-            onFailed(false);
+            onFailed(-1000, e.getMessage());
         }
     }
 

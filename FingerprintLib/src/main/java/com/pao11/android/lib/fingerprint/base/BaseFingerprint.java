@@ -78,12 +78,7 @@ public abstract class BaseFingerprint {
         mNumberOfFailures = mMaxAvailableTimes;
 
         if (mIdentifyListener != null) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mIdentifyListener.onSucceed();
-                }
-            });
+            runOnUiThread(() -> mIdentifyListener.onSucceed());
         }
 
         cancelIdentify();
@@ -97,12 +92,7 @@ public abstract class BaseFingerprint {
         if (++mNumberOfFailures < mMaxAvailableTimes) {
             if (mIdentifyListener != null) {
                 final int chancesLeft = mMaxAvailableTimes - mNumberOfFailures;
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mIdentifyListener.onNotMatch(chancesLeft);
-                    }
-                });
+                runOnUiThread(() -> mIdentifyListener.onNotMatch(chancesLeft));
             }
 
             if (needToCallDoIdentifyAgainAfterNotMatch()) {
@@ -112,27 +102,24 @@ public abstract class BaseFingerprint {
             return;
         }
 
-        onFailed(false);
+        onFailed(-1000, "您已多次指纹匹配失败");
     }
 
-    protected void onFailed(final boolean isDeviceLocked) {
+    protected void onFailed(int errMsgId, CharSequence errString) {
         if (mIsCanceledIdentify) {
             return;
         }
 
-        final boolean isStartFailedByDeviceLocked = isDeviceLocked && mNumberOfFailures == 0;
+        final boolean isStartFailedByDeviceLocked = errMsgId == 7 && mNumberOfFailures == 0;
 
         mNumberOfFailures = mMaxAvailableTimes;
 
         if (mIdentifyListener != null) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (isStartFailedByDeviceLocked) {
-                        mIdentifyListener.onStartFailedByDeviceLocked();
-                    } else {
-                        mIdentifyListener.onFailed(isDeviceLocked);
-                    }
+            runOnUiThread(() -> {
+                if (isStartFailedByDeviceLocked) {
+                    mIdentifyListener.onStartFailedByDeviceLocked();
+                } else {
+                    mIdentifyListener.onFailed(errMsgId, errString);
                 }
             });
         }
@@ -181,7 +168,7 @@ public abstract class BaseFingerprint {
 
         void onNotMatch(int availableTimes);
 
-        void onFailed(boolean isDeviceLocked);
+        void onFailed(int errMsgId, CharSequence errString);
 
         void onStartFailedByDeviceLocked();
     }

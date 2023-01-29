@@ -1,10 +1,11 @@
 package com.pao11.android.lib.fingerprint.demo;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.pao11.android.lib.fingerprint.FingerprintIdentify;
 import com.pao11.android.lib.fingerprint.base.BaseFingerprint;
@@ -48,12 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void append(String msg) {
         mTvTips.append(msg);
-        mScrollView.post(new Runnable() {
-            @Override
-            public void run() {
-                mScrollView.fullScroll(View.FOCUS_DOWN);
-            }
-        });
+        mScrollView.post(() -> mScrollView.fullScroll(View.FOCUS_DOWN));
     }
 
     public void start(View view) {
@@ -70,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailed(boolean isDeviceLocked) {
-                append("\n" + getString(R.string.failed) + " " + isDeviceLocked);
+            public void onFailed(int errMsgId, CharSequence errString) {
+                append("\n" + getString(R.string.failed) + "" + errMsgId + " " + (errMsgId == 7) + " " + errString);
             }
 
             @Override

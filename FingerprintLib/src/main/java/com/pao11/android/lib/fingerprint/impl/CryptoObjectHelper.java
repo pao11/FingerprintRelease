@@ -6,6 +6,8 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
 
+import androidx.annotation.RequiresApi;
+
 import com.pao11.android.lib.fingerprint.aosp.FingerprintManagerCompat;
 
 import java.security.Key;
@@ -17,6 +19,7 @@ import javax.crypto.KeyGenerator;
 /**
  * Created by pao11 on 2017/9/6.
  */
+@RequiresApi(api = Build.VERSION_CODES.M)
 public class CryptoObjectHelper {
     // This can be key name you want. Should be unique for the app.
     static final String KEY_NAME = "com.pao11.android.lib.fingerprint_authentication_key";

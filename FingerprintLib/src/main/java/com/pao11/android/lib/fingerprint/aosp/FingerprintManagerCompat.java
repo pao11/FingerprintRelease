@@ -19,10 +19,11 @@ package com.pao11.android.lib.fingerprint.aosp;
 import android.Manifest;
 import android.content.Context;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresPermission;
-import android.support.v4.os.CancellationSignal;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresPermission;
+import androidx.core.os.CancellationSignal;
 
 import java.security.Signature;
 
