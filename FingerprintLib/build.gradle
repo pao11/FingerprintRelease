@@ -1,6 +1,10 @@
 apply plugin: 'com.android.library'
 //apply plugin: 'com.github.dcendents.android-maven'
 //apply plugin: 'com.novoda.bintray-release'
+// vanniktech 插件
+apply plugin: 'com.vanniktech.maven.publish'
+// Kotlin Javadoc 插件
+apply plugin: 'org.jetbrains.dokka'
 
 //group='com.github.pao11'
 
