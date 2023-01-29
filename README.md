@@ -11,6 +11,8 @@
 
 **1. Gradle 添加引用**
 
+    compile 'io.github.pao11:finger-print:1.3.0'    //适配AndroidX
+
     compile 'com.github.pao11:FingerprintRelease:v1.2.0'
 
 **2. AndroidManifest 添加权限**
@@ -65,6 +67,8 @@
     -keep class com.samsung.android.sdk.** { *; }
 
 **6. 更新记录**
+
+**v1.3.0**　`2023.01.29`　兼容androidx库
 
 **v1.2.0**　`2017.09.07`　增加CryptoObject，这是一个加密的对象类，用来保证认证的安全性
 
